@@ -9,7 +9,7 @@ Digital competition management portal for ZIET Mumbai, Kendriya Vidyalaya Sangat
 - Stage categories: Foundational (Balvatika–Grade II), Preparatory (III–V), Middle (VI–VIII), Secondary (IX–XII).
 - Theme selection includes the six themes in the KVS guidelines; FLN is restricted to Foundational and Preparatory stages.
 - Includes presentation scheduling, the official eight-criterion / 100-mark evaluation matrix, average-score calculation, provisional stage-wise rankings, CSV exports and JSON backup.
-- Presentation timing: 20 minutes + 5 minutes jury interaction.
+- Presentation timing: 20 minutes + 5 minutes jury interaction (25 minutes total).\n- Regional winners in all four categories represent their Regions at the Zonal-Level SAMRIDDHI competition at ZIET Bhubaneswar on 11–12 November 2026; the selected teacher/team should be relieved to participate.\n- Zonal winners represent KVS at the National-Level SAMRIDDHI event organised by NCERT.
 
 ## Hosting
 
