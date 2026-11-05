@@ -58,7 +58,7 @@ function postShared(action,data,done){
  setTimeout(()=>{if(!finished){finished=true;form.remove();frame.remove();if(done)done()}},5000);
 }
 function migrateLocalLinks(){
- const local=JSON.parse(localStorage.getItem(KEY)||'{}').links||[];
+ const local=LOCAL_LINKS_BEFORE_SYNC;
  if(!local.length)return;
  let i=0;const next=()=>{if(i>=local.length){readSharedLinks();return}const item=local[i++];postShared('add',item,next)};
  next();
@@ -69,7 +69,7 @@ const stages=['Foundational Stage (Balvatika–Grade II)','Preparatory Stage (Gr
 const themes=['Art-Integrated Pedagogy','Inclusive Education','Innovative Pedagogical Practices','Experiential Learning','Project-Based Learning','Foundational Literacy and Numeracy (FLN)'];
 const rubric=[['theme', 'Relevance to selected theme and curricular goals',15],['innovation','Innovation and originality of the practice',15],['engagement','Student engagement and participation',15],['outcomes','Achievement of learning outcomes / competencies',20],['inclusion','Inclusiveness and responsiveness to diverse learners',10],['experiential','Experiential / experimental / creative dimension',10],['evidence','Assessment, evidence and teacher reflection',10],['presentation','Presentation and scope for replication',5]];
 const titles={dashboard:['Competition Dashboard','Zonal-level competition overview for ZIET Mumbai feeder Regions.'],regions:['Feeder Regions','Track the five Regional Offices participating under ZIET Mumbai.'],entries:['Teacher Entries','Capture teacher/team details, stage, theme and proposal information.'],schedule:['Competition Schedule','Manage presentation slots and jury interaction schedule.'],evaluation:['Jury Evaluation','Score each entry against the official 100-mark evaluation matrix.'],results:['Results & Rankings','Automatically calculate aggregate marks and stage-wise positions.'],guidelines:['Guidelines & Forms','Official competition framework, submission checklist and forms.'],participants:['Participants’ Files','Access participant-wise submissions, presentations and supporting documents.'],resources:['Resources','Reference materials, templates, presentations and useful learning resources.'],glimpses:['Glimpses','Photographs and videos capturing the SAMRIDDHI competition journey.'],reports:['Reports & Backup','Export records and maintain a local data backup.']};
-let db=JSON.parse(localStorage.getItem(KEY)||'null')||{regions:regions.map(name=>({name,entries:0,status:'To be updated'})),entries:[],schedule:[],evaluations:[]};let page='dashboard';
+let db=JSON.parse(localStorage.getItem(KEY)||'null')||{regions:regions.map(name=>({name,entries:0,status:'To be updated'})),entries:[],schedule:[],evaluations:[]};const LOCAL_LINKS_BEFORE_SYNC=Array.isArray(db.links)?db.links.slice():[];let page='dashboard';
 function save(){localStorage.setItem(KEY,JSON.stringify(db))}
 function esc(v){return String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]))}
 function validThemes(stage){return stage&&stage.startsWith('Foundational')||stage&&stage.startsWith('Preparatory')?themes:themes.filter(t=>t!==themes[5])}
